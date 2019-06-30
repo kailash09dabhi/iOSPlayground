@@ -15,6 +15,9 @@
 		4AAC82DF22C806CF0099757D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AAC82DD22C806CF0099757D /* LaunchScreen.storyboard */; };
 		4AAC82EA22C806CF0099757D /* CountryListAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAC82E922C806CF0099757D /* CountryListAppTests.swift */; };
 		4AAC82F522C806CF0099757D /* CountryListAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAC82F422C806CF0099757D /* CountryListAppUITests.swift */; };
+		4AAC830422C808B50099757D /* CountryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAC830222C808B50099757D /* CountryList.swift */; };
+		4AAC830522C808B50099757D /* WebRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAC830322C808B50099757D /* WebRequest.swift */; };
+		4AAC830722C92C940099757D /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAC830622C92C940099757D /* CountryTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		4AAC82F022C806CF0099757D /* CountryListAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CountryListAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AAC82F422C806CF0099757D /* CountryListAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryListAppUITests.swift; sourceTree = "<group>"; };
 		4AAC82F622C806CF0099757D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4AAC830222C808B50099757D /* CountryList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryList.swift; sourceTree = "<group>"; };
+		4AAC830322C808B50099757D /* WebRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebRequest.swift; sourceTree = "<group>"; };
+		4AAC830622C92C940099757D /* CountryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +105,12 @@
 		4AAC82D022C806CD0099757D /* CountryListApp */ = {
 			isa = PBXGroup;
 			children = (
+				4AAC830222C808B50099757D /* CountryList.swift */,
+				4AAC830322C808B50099757D /* WebRequest.swift */,
 				4AAC82D122C806CD0099757D /* AppDelegate.swift */,
 				4AAC82D322C806CD0099757D /* ViewController.swift */,
 				4AAC82D522C806CD0099757D /* Main.storyboard */,
+				4AAC830622C92C940099757D /* CountryTableViewCell.swift */,
 				4AAC82DB22C806CF0099757D /* Assets.xcassets */,
 				4AAC82DD22C806CF0099757D /* LaunchScreen.storyboard */,
 				4AAC82E022C806CF0099757D /* Info.plist */,
@@ -259,6 +268,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AAC830722C92C940099757D /* CountryTableViewCell.swift in Sources */,
+				4AAC830522C808B50099757D /* WebRequest.swift in Sources */,
+				4AAC830422C808B50099757D /* CountryList.swift in Sources */,
 				4AAC82DA22C806CD0099757D /* CountryListApp.xcdatamodeld in Sources */,
 				4AAC82D422C806CD0099757D /* ViewController.swift in Sources */,
 				4AAC82D222C806CD0099757D /* AppDelegate.swift in Sources */,
