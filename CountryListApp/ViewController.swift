@@ -17,20 +17,28 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell =   UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "cell")
-        cell.textLabel?.text = countryList[indexPath.row].name
+        let country = countryList[indexPath.row]
+        let cell =   tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as!CountryTableViewCell
+        cell.name?.text = country.name
+        if country.currencies[0].name != nil {
+            cell.currencies?.text = country.currencies[0].name
+        }
+        cell.flag?.text = country.flag
+        cell.flagImg?.sd_setImage(with: URL(string: "https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=2000"),completed:{ (uiimage, sd, asds, isds) in })
+        cell.population?.text = String(country.population)
+        cell.religion?.text = country.capital
         return cell
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        let session = URLSession.shared
-        session.countryListTask(with: url!){countryList,response,error in
-            self.countryList = countryList!;
-            self.tableView.reloadData()
-            
+        URLSession.shared.countryListTask(with: url!){
+            countryList,response,error in
+            DispatchQueue.main.async {
+                self.countryList = countryList!.dropLast(245)
+                self.tableView.reloadData()
+            }
             }.resume()
     }
 

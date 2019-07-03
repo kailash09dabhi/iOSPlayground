@@ -10,6 +10,7 @@ import UIKit
 
 class CountryTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var flagImg: UIImageView!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var religion: UILabel!
     @IBOutlet weak var population: UILabel!
