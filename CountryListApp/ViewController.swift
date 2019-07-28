@@ -9,9 +9,11 @@
 import UIKit
 
 class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource {
-
-    @IBOutlet weak var tableView: UITableView!
     var countryList : CountryList = []
+    var selectedCountry : CountryListElement?
+    
+    @IBOutlet weak var tableView: UITableView!
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return countryList.count
     }
@@ -19,28 +21,37 @@ class ViewController: UIViewController ,UITableViewDelegate,UITableViewDataSourc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let country = countryList[indexPath.row]
         let cell =   tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as!CountryTableViewCell
-        cell.name?.text = country.name
-        if country.currencies[0].name != nil {
-            cell.currencies?.text = country.currencies[0].name
-        }
-        cell.flag?.text = country.flag
-        cell.flagImg?.sd_setImage(with: URL(string: "https://images.pexels.com/photos/248797/pexels-photo-248797.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=2000"),completed:{ (uiimage, sd, asds, isds) in })
-        cell.population?.text = String(country.population)
-        cell.religion?.text = country.capital
+        cell.country = country;
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.selectedCountry = countryList[indexPath.row]
+        performSegue(withIdentifier: "detail", sender: self)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         URLSession.shared.countryListTask(with: url!){
             countryList,response,error in
+            guard let countryList = countryList else {
+                return
+            }
             DispatchQueue.main.async {
-                self.countryList = countryList!.dropLast(245)
+                self.countryList = countryList
                 self.tableView.reloadData()
             }
             }.resume()
     }
+    
+    // MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "detail"{
+            let destination = segue.destination as! CountryDetailViewController
+            let  index = tableView.indexPathForSelectedRow?.row
+                destination.country = countryList[index!]
 
+        }
+    }
 }
 
